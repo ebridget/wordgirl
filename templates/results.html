@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="jumbo">
+    <h2>Thank you for using WordGirl!<h2>
+    <h3>This is a project made at FemmeHacks2016<h3>
+    <form method="POST" action="/send">
+        <label><span>Insert url of site to analyze: </span></label><br>
+        <input type="text" name="url"/><br>
+        <label><span>Insert keyword (related words will also be identified): </span></label><br>
+        <input type="text" name="keyword"/><br>
+        <input type="submit" value="Run analysis"/>
+    </form>
+  </div>
+{% endblock %}
