@@ -23,7 +23,7 @@ def submitform():
     url=request.form['url']
     keyword=request.form['keyword']
     text=parser.extract(url)
-    word_list=logic.trigger(text, keyword)
+    word_list=logic.similar_words(text, keyword)
     word_list=['bubble','phone','dont know','Saturday','ten','Mississippi'\
                 ,'more words that are long???','tea','donut']
     #similarwords = generate the list from logic.py
