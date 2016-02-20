@@ -13,7 +13,6 @@ app = Flask(__name__)
 # Define a route for the default URL, which loads the form
 @app.route('/')
 def form():
-  logic.example()
   return render_template(MAIN_PAGE)
 
 # Define a route for the action of the form, for example '/hello/'
@@ -23,7 +22,7 @@ def form():
 def hello():
     name=request.form['url']
     email=request.form['keyword']
-    return render_template('form_action.html', name=name, email=email)
+    return render_template('home.html', name=name, email=email)
 """
 # Run the app :)
 if __name__ == '__main__':
