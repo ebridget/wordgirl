@@ -14,6 +14,4 @@ def extract(url):
     return text
 
 web_text = extract("https://en.wikipedia.org/wiki/Fermi_paradox").split()
-
-for x in web_text:
-    print x
+print web_text
