@@ -1,22 +1,16 @@
 from requests import get
-import urllib2
+import urllib
 from bs4 import BeautifulSoup
 
-def visible(element):
-    if element.parent.name in ['head', 'title', 'p']:
-        return True
-    else:
-        return False
-
 def extract(url):
-    html = urllib2.urlopen(url).read()
+    html = urllib.urlopen(url).read()
     soup = BeautifulSoup(html, "xml")
-    text = soup.findAll(text = 'true')
+    for script in soup(["script", "style"]):
+        script.extract()
+    text = ''.join(soup.findAll(text=True))
     raw = soup.get_text()
-    visible_text = filter(visible, text)
-    print raw
-    print visible_text
-    return visible_text
+    #visible_text = filter(visible, raw)
+    return text
 
 def finder(orig, target):
     orig = orig.strip()
@@ -29,8 +23,10 @@ def finder(orig, target):
             ctr = ctr + 1
     return ctr
 
-web_text = extract("https://en.wikipedia.org/wiki/Fermi_paradox")
-print web_text[0:12]
+web_text = extract("https://en.wikipedia.org/wiki/Fermi_paradox").split()
+
+for x in web_text:
+    print x
 
 '''
 
