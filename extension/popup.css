@@ -1,0 +1,28 @@
+h1 {
+  color: midnightblue;
+  size: 20px;
+  font-family: 'Georgia', serif;
+}
+
+h6 {
+  size: 3px;
+  font-family: 'Georgia', serif;
+}
+
+div {
+  width: 450px;
+  border: 8px double midnightblue;
+  margin: 10px;
+  padding-top: 30px;
+  padding-bottom: 40px;
+  padding-right: 50px;
+  padding-left: 50px;
+}
+
+body {
+  position: relative;
+  background-image: url("../img/trianglify-background.jpg");
+  background-color: lightblue;
+  background-repeat: repeat-y;
+  color: black;
+}
