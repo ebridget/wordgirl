@@ -2,6 +2,10 @@
 # and render_template, to render our templates (form and response)
 # we'll use url_for to get some URLs for the app on the templates
 from flask import Flask, render_template, request, url_for
+import logic
+
+MAIN_PAGE = 'home.html'
+
 
 # Initialize the Flask application
 app = Flask(__name__)
@@ -9,7 +13,8 @@ app = Flask(__name__)
 # Define a route for the default URL, which loads the form
 @app.route('/')
 def form():
-    return render_template('home.html')
+  logic.example()
+  return render_template(MAIN_PAGE)
 
 # Define a route for the action of the form, for example '/hello/'
 # We are also defining which type of requests this route is
