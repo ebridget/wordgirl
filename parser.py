@@ -11,9 +11,4 @@ def extract(url):
     text = ''.join(soup.findAll(text=True))
     raw = soup.get_text()
     #visible_text = filter(visible, raw)
-    return text
-
-web_text = extract("https://en.wikipedia.org/wiki/Fermi_paradox").split()
-
-for x in web_text:
-    print x
+    return text.split()

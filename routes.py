@@ -2,7 +2,7 @@
 # and render_template, to render our templates (form and response)
 # we'll use url_for to get some URLs for the app on the templates
 from flask import Flask, render_template, request, url_for
-import logic
+import logic, parser
 
 MAIN_PAGE = 'home.html'
 
@@ -22,10 +22,18 @@ def form():
 def submitform():
     url=request.form['url']
     keyword=request.form['keyword']
+    text=parser.extract(url)
+    word_list=logic.trigger(text, keyword)
+    word_list=['bubble','phone','dont know','Saturday','ten','Mississippi'\
+                ,'more words that are long???','tea','donut']
     #similarwords = generate the list from logic.py
     #rating = generate the list from logic.py
     #TODO: rendertemplate('results.html',url=url,
     #            keyword=keyword,similarwords=similarwords,rating=rating)
+    return render_template('results.html',similarwords=word_list)
+
+@app.route('/searchagain/', methods=['POST'])
+def searchagain():
     return render_template('home.html')
 
 if __name__ == '__main__':

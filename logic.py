@@ -1,3 +1,5 @@
+import logic
+
 # umbc api for semantic similarity
 sss_url = "http://swoogle.umbc.edu/SimService/GetSimilarity"
 
@@ -6,13 +8,13 @@ def sss(s1, s2, type='relation', corpus='webbase'):
         response = get(sss_url, params={'operation':'api','phrase1':s1,'phrase2':s2,'type':type,'corpus':corpus})
         return float(response.text.strip())
     except:
-        print 'Error in getting similarity for %s: %s' % ((s1,s2), response)
+        print 'Error in getting similarity for %s: %s' % (s1,s2)
         return 0.0
 
 # find semantically similar words in present web text
 def trigger(txt, tgt):
     trigs = [tgt]
-    for s in txt.split():
+    for s in txt:
         val = sss(tgt, s, type='relation', corpus=txt)
         if val > 0.75:
             trigs.add(s)
@@ -22,11 +24,11 @@ def trigger(txt, tgt):
 def count_trigs(txt, trigs):
     ctr = 0
     for t in trigs:
-        for s in txt.split():
+        for s in nltk.corpus:
             if (s == t):
                 ctr = ctr + 1
     return ctr
 
 # trigger words as a percentage of the whole text
-def trig_stats(txt):
-    ctr / len(txt.split())
+def trig_stats(txt, trigs):
+    count_trigs(txt, trigs) / len(txt)
