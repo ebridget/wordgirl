@@ -18,18 +18,15 @@ def form():
 # Define a route for the action of the form, for example '/hello/'
 # We are also defining which type of requests this route is
 # accepting: POST requests in this case
-@app.route('/hello/', methods=['POST'])
-def hello():
-    name=request.form['url']
-    email=request.form['keyword']
-    return render_template('home.html', name=name, email=email)
-"""
-# Run the app :)
-if __name__ == '__main__':
-  app.run(
-        host="0.0.0.0",
-        port=int("5000")
-  )
-"""
+@app.route('/submitform/', methods=['POST'])
+def submitform():
+    url=request.form['url']
+    keyword=request.form['keyword']
+    #similarwords = generate the list from logic.py
+    #rating = generate the list from logic.py
+    #TODO: rendertemplate('results.html',url=url,
+    #            keyword=keyword,similarwords=similarwords,rating=rating)
+    return render_template('home.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
