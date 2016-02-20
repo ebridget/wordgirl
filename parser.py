@@ -13,7 +13,8 @@ def extract(url):
     #visible_text = filter(visible, raw)
     return text
 
-web_text = extract("https://en.wikipedia.org/wiki/Fermi_paradox").split()
+if __name__ == '__main__':
+    web_text = extract("https://en.wikipedia.org/wiki/Fermi_paradox").split()
 
-for x in web_text:
-    print x
+    for x in web_text:
+        print x
