@@ -26,6 +26,10 @@ def submitform():
     #rating = generate the list from logic.py
     #TODO: rendertemplate('results.html',url=url,
     #            keyword=keyword,similarwords=similarwords,rating=rating)
+    return render_template('results.html')
+
+@app.route('/searchagain/', methods=['POST'])
+def searchagain():
     return render_template('home.html')
 
 if __name__ == '__main__':
