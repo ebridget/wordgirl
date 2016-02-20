@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <header>
+      <title>WordGirl</title>
+      <link rel='stylesheet' href= "../static/css/wordgirl_stylesheet.css" type="text/css">
+      <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js">
+      </script>
+  </header>
+    <body>
+      <div>
+        <h1>WordGirl</h1>
+        <p>The site that does everything you need.</p>
+        <form method="POST" action="/send">
+            <label><span>Insert url of site to analyze: </span></label><br>
+            <input type="text" name="url"/><br>
+            <label><span>Insert keyword (related words will also be identified): </span></label><br>
+            <input type="text" name="keyword"/><br>
+            <input type="submit" value="Run analysis"/>
+        </form>
+      </div>
+      <script src='../static/js/wordgirl.js'></script>
+    </body>
+</html>

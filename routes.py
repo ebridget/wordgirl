@@ -3,6 +3,7 @@ import logic
 
 MAIN_PAGE = 'home.html'
 
+
 app = Flask(__name__)
 
 @app.route('/')
