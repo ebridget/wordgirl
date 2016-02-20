@@ -15,16 +15,17 @@ def sss(s1, s2, type='relation', corpus='webbase'):
 def trigger(txt, tgt):
     trigs = [tgt]
     for s in txt:
-        val = sss(tgt, s, type='relation', corpus=txt)
-        if val > 0.75:
-            trigs.add(s)
+        if s.isalpha() and s in sss.corpus:
+            val = sss(tgt, s, type='relation')
+            if val > 0.75:
+                trigs.add(s)
     return trigs
 
 # count trigger words
 def count_trigs(txt, trigs):
     ctr = 0
     for t in trigs:
-        for s in nltk.corpus:
+        for s in txt:
             if (s == t):
                 ctr = ctr + 1
     return ctr

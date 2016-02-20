@@ -10,5 +10,4 @@ def extract(url):
         script.extract()
     text = ''.join(soup.findAll(text=True))
     raw = soup.get_text()
-    #visible_text = filter(visible, raw)
     return text.split()
