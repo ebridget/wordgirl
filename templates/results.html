@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="jumbo">
+    <h2>Thank you for using WordGirl!<h2>
+    <h3>Here are related words found on the site you searched:<h3>
+
+    <ul>
+      {% for word in similarwords %}
+      <div class=flash>{{ word }}</div>
+      <script> console.log("Similar word"+word) </script>
+      {% endfor %}
+    </ul>
+
+    <form method="POST" action="/searchagain/">
+        <input type="submit" value="Search again"/>
+    </form>
+  </div>
+{% endblock %}
