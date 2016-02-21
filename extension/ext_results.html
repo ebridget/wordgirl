@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WordGirl</title>
+    <link rel="stylesheet" href="ext_results.css" type="text/css">
+  </head>
+  <body>
+    <div>
+      <h2>Thank you for using WordGirl!<h2>
+      <h3>Here are related words found on the site you searched:<h3>
+
+      <ul>
+        <div class=wordlist>
+        {% for word in similarwords %}
+        <font size=4px>{{ word }}</font><br>
+        {% endfor %}
+        <div class=wordlist>
+      </ul>
+
+      <div class=percent><br>
+        <p><font size=10px>50%</font><br>of the words on<br>the page are related<br>to the keyword</p>
+      </div>
+
+      <form method="POST" action="/searchagain/">
+        <div class=button>
+          <br><input type="submit" value="Search again"/>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
