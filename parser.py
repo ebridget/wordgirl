@@ -1,4 +1,3 @@
-from requests import get
 import urllib
 from bs4 import BeautifulSoup
 
@@ -9,6 +8,4 @@ def extract(url):
     for script in soup(["script", "style"]):
         script.extract()
     text = ''.join(soup.findAll(text=True))
-    raw = soup.get_text()
-    #visible_text = filter(visible, raw)
     return text.split()

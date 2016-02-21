@@ -1,34 +1,27 @@
+from requests import get
 import logic
+
 
 # umbc api for semantic similarity
 sss_url = "http://swoogle.umbc.edu/SimService/GetSimilarity"
 
-def sss(s1, s2, type='relation', corpus='webbase'):
-    try:
-        response = get(sss_url, params={'operation':'api','phrase1':s1,'phrase2':s2,'type':type,'corpus':corpus})
-        return float(response.text.strip())
-    except:
-        print 'Error in getting similarity for %s: %s' % (s1,s2)
-        return 0.0
 
-# find semantically similar words in present web text
-def trigger(txt, tgt):
-    trigs = [tgt]
-    for s in txt:
-        val = sss(tgt, s, type='relation', corpus=txt)
-        if val > 0.75:
-            trigs.add(s)
-    return trigs
-
-# count trigger words
-def count_trigs(txt, trigs):
+#find semantically similar words in text
+def similar_words(tgt, txt, type='relation', corpus='webbase'):
+    trigs = set([tgt])
+    not_trigs = set([])
     ctr = 0
-    for t in trigs:
-        for s in nltk.corpus:
-            if (s == t):
-                ctr = ctr + 1
-    return ctr
-
-# trigger words as a percentage of the whole text
-def trig_stats(txt, trigs):
-    count_trigs(txt, trigs) / len(txt)
+    for s in txt:
+        if s.isalpha():
+            if s in trigs:
+                ctr += 1
+            else:
+                if s not in not_trigs:
+                    response = get(sss_url, params={'operation':'api','phrase1':tgt,'phrase2':s,'type':type,'corpus':corpus})
+                    if float(response.text.strip()) > 0.5:
+                        trigs.add(s)
+                        ctr += 1
+                    else:
+                        not_trigs.add(s)
+    percentage = round((((ctr*1.0) / len(txt)) * 100), 2)
+    return trigs, percentage
