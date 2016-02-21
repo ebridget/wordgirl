@@ -19,18 +19,14 @@ def form():
 # We are also defining which type of requests this route is
 # accepting: POST requests in this case
 @app.route('/submitform/', methods=['POST'])
+
 def submitform():
     url=request.form['url']
     keyword=request.form['keyword']
     text=parser.extract(url)
-    word_list=logic.similar_words(text, keyword)
-    word_list=['bubble','phone','dont know','Saturday','ten','Mississippi'\
-                ,'more words that are long???','tea','donut']
-    #similarwords = generate the list from logic.py
-    #rating = generate the list from logic.py
-    #TODO: rendertemplate('results.html',url=url,
-    #            keyword=keyword,similarwords=similarwords,rating=rating)
-    return render_template('results.html',similarwords=word_list)
+    word_list,count=logic.similar_words(text, keyword)
+    percent = count/len(word_list)
+    return render_template('results.html',similarwords=word_list,percentage=percent)
 
 @app.route('/searchagain/', methods=['POST'])
 def searchagain():
