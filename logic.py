@@ -24,17 +24,3 @@ def similar_words(tgt, txt, type='relation', corpus='webbase'):
                     else:
                         not_trigs.add(s)
     return trigs, ctr
-
-
-# count keyword and related words
-def count_words(txt, trigs):
-    ctr = 0
-    for t in trigs:
-        for s in txt:
-            if (s == t):
-                ctr = ctr + 1
-    return ctr
-
-# instances of keyword and related words as a percentage of the whole text
-def word_percent(txt, trigs):
-    return count_words(txt, trigs) / len(txt)
