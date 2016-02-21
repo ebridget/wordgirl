@@ -23,4 +23,5 @@ def similar_words(tgt, txt, type='relation', corpus='webbase'):
                         ctr += 1
                     else:
                         not_trigs.add(s)
-    return trigs, ctr
+    percentage = round((((ctr*1.0) / len(txt)) * 100), 2)
+    return trigs, percentage
