@@ -24,7 +24,7 @@ def submitform():
     url=request.form['url']
     keyword=request.form['keyword']
     text=parser.extract(url)
-    word_list,percentage=logic.similar_words(keyword, text)
+    word_list,percent=logic.similar_words(keyword, text)
     return render_template('results.html',similarwords=word_list,percentage=percent)
 
 @app.route('/searchagain/', methods=['POST'])
