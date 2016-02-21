@@ -1,15 +1,21 @@
 {% extends "layout.html" %}
 {% block content %}
-  <div class="jumbo">
+  <div>
     <h2>Thank you for using WordGirl!<h2>
     <h3>Here are related words found on the site you searched:<h3>
 
     <ul>
+      <div class=wordlist>
       {% for word in similarwords %}
-      <div class=flash>{{ word }}</div>
-      <script> console.log("Similar word"+word) </script>
+      <font size=4px>{{ word }}</font><br>
       {% endfor %}
+      <div class=wordlist>
     </ul>
+
+    <div class=percent><br><br>
+      <font size=10px>50</font><br>
+      percent of the <br> words match
+    </div><br><br><br><br><br><br><br><br><br><br>
 
     <form method="POST" action="/searchagain/">
         <input type="submit" value="Search again"/>

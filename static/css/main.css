@@ -47,6 +47,19 @@ div.jumbo {
           border-radius: 6px;
 }
 
+div.wordlist {
+  color:red;
+  margin-left:200px;
+  margin-right:10px;
+  float:left;
+}
+
+div.percent {
+  color:blue;
+  margin-right:250px;
+  float:right;
+}
+
 h2 {
   font-size: 3em;
   margin-top: 40px;
