@@ -21,7 +21,6 @@ div {
 
 body {
   position: relative;
-  background-image: url("../img/trianglify-background.jpg");
   background-color: lightblue;
   background-repeat: repeat-y;
   color: black;
